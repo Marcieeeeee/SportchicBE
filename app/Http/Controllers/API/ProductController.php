@@ -28,8 +28,6 @@ class ProductController extends Controller
             'price' =>'required|max:20',
             'image' =>'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
-        
-        
 
         if ($validator->fails()) {
             return response()->json([
@@ -51,8 +49,6 @@ class ProductController extends Controller
                 $product->image = 'upload/product/'.$filename;
             }
             
-        
-
             $product->save();
             return response()->json([
                 'status'=>200,

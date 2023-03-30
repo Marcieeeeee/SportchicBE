@@ -70,6 +70,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'cors' => \App\Http\Middleware\Cors::class,
         'cors.preflight' => \App\Http\Middleware\CorsPreflightMiddleware::class,
+        'isApiAdmin'=> \App\Http\Middleware\ApiAdminMiddleware::class,
     ];
 
     protected function mapWebRoutes()
