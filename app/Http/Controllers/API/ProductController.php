@@ -80,8 +80,6 @@ class ProductController extends Controller
             'name' =>'required|max:191',
             'price' =>'required|max:20',
         ]);
-        
-        
 
         if ($validator->fails()) {
             return response()->json([
@@ -121,4 +119,26 @@ class ProductController extends Controller
             }
         }
     }
+
+    public function delete(Request $request)
+    {
+        $productId = $request->input('id');
+
+        $product = Product::find($productId);
+
+        if (!$product) {
+            return response()->json([
+                'status' => 404,
+                'message' => 'Product not found',
+            ]);
+        }
+
+        $product->delete();
+
+        return response()->json([
+            'status' => 200,
+            'message' => 'Product deleted successfully',
+        ]);
+    }
+
 }
